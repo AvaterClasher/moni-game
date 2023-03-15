@@ -40,7 +40,7 @@ function Interface() {
   return (
     <div className="interface">
       <div ref={time} className="time">
-        {elaspedTime === 65 && {timeCount}}
+        {timeCount}
       </div>
       {phase === "ended" && (
         <div className="restart" onClick={restart}>
