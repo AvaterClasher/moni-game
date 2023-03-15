@@ -71,7 +71,7 @@ function BlockStart({ position = [0, 0, 0] }) {
           maxWidth={10}
           lineHeight={0.75}
           textAlign="left"
-          position={[1,0.33,0]}
+          position={[2,0.33,0]}
           rotation-y={-0.6}
         >
           Made by Soumyadip Moni
