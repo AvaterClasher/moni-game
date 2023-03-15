@@ -28,7 +28,7 @@ function Sound({ url }) {
   }
   return (
   <>
-    <button onClick={pause}>Sound</button>
+ 
     <positionalAudio ref={sound} args={[listener]} />
   
   </>
