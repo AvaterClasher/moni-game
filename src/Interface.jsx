@@ -28,6 +28,9 @@ function Interface() {
 
       elaspedTime = elaspedTime.toFixed(2);
       setTimeCount(elaspedTime);
+      if (elaspedTime > 65){
+        state.phase = "ended"
+      }
     });
     return () => {
       unsubscribeEffect();
