@@ -59,19 +59,20 @@ function BlockStart({ position = [0, 0, 0] }) {
           maxWidth={0.25}
           lineHeight={0.75}
           textAlign="right"
-          position={[0.75,0.65,0]}
+          position={[0.75,0.8,0]}
           rotation-y={-0.6}
         >
           Moni's Race
+
           <meshBasicMaterial toneMapped={false}/>
         </Text>
         <Text
           scale={0.1} 
           font="./bebas-neue-v9-latin-regular.woff"
-          maxWidth={10}
+          maxWidth={8}
           lineHeight={0.75}
           textAlign="left"
-          position={[2,0.33,0]}
+          position={[0.9,0.33,0]}
           rotation-y={-0.6}
         >
           Made by Soumyadip Moni
