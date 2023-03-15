@@ -65,6 +65,20 @@ function BlockStart({ position = [0, 0, 0] }) {
           Moni's Race
           <meshBasicMaterial toneMapped={false}/>
         </Text>
+        <Text
+          scale={0.1} 
+          font="./bebas-neue-v9-latin-regular.woff"
+          maxWidth={8}
+          lineHeight={0.75}
+          textAlign="left"
+          position={[0.9,0.33,0]}
+          rotation-y={-0.6}
+        >
+          Made by Soumyadip Moni
+          Special Thanks to Shubham Raj
+          <meshBasicMaterial toneMapped={false}/>
+        </Text>
+
       </Float>
       <mesh
         geometry={boxGeometry}
