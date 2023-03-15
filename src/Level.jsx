@@ -68,7 +68,7 @@ function BlockStart({ position = [0, 0, 0] }) {
         <Text
           scale={0.1} 
           font="./bebas-neue-v9-latin-regular.woff"
-          maxWidth={8}
+          maxWidth={10}
           lineHeight={0.75}
           textAlign="left"
           position={[1,0.33,0]}
