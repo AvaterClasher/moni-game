@@ -1,9 +1,39 @@
 import { RigidBody, useRapier } from "@react-three/rapier";
-import { useKeyboardControls } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useKeyboardControls,PositionalAudio } from "@react-three/drei";
+import { useFrame,Canvas, extend, useThree, useLoader } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useGame from "./stores/useGame";
+
+function Sound({ url }) {
+  const [on,setOn] = useState(0)
+  const sound = useRef()
+  const { camera } = useThree()
+  const [listener] = useState(() => new THREE.AudioListener())
+  const buffer = useLoader(THREE.AudioLoader, url)
+  useEffect(() => {
+    sound.current.setBuffer(buffer)
+    sound.current.setRefDistance(1)
+    sound.current.setLoop(true)
+    sound.current.play()
+    camera.add(listener)
+    return () => camera.remove(listener)
+  }, [])
+
+  const play = () => {
+    sound.current.play()
+  }
+  const pause = () => {
+    sound.current.pause()
+  }
+  return (
+  <>
+    <button onClick={pause}>Sound</button>
+    <positionalAudio ref={sound} args={[listener]} />
+  
+  </>
+  )
+}
 
 export default function Player() {
   const body = useRef();
@@ -112,6 +142,8 @@ export default function Player() {
     if (bodyPosition.z < -(blocksCount * 4 + 2)) end();
 
     if (bodyPosition.y < -4) restart();
+
+    
   });
 
   return (
@@ -125,7 +157,9 @@ export default function Player() {
         linearDamping={0.5}
         angularDamping={0.5}
       >
+      
         <mesh castShadow>
+          <Sound url="/sound.mp3" />
           <icosahedronGeometry args={[0.3, 1]} />
           <meshStandardMaterial color="#412227" flatShading />
         </mesh>
