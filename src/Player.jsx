@@ -20,19 +20,7 @@ function Sound({ url }) {
     return () => camera.remove(listener)
   }, [])
 
-  const play = () => {
-    sound.current.play()
-  }
-  const pause = () => {
-    sound.current.pause()
-  }
-  return (
-  <>
- 
-    <positionalAudio ref={sound} args={[listener]} />
-  
-  </>
-  )
+  return <positionalAudio ref={sound} args={[listener]} /> 
 }
 
 export default function Player() {
