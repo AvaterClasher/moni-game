@@ -15,8 +15,10 @@ function Sound({ url }) {
     sound.current.setBuffer(buffer)
     sound.current.setRefDistance(1)
     sound.current.setLoop(true)
-    sound.current.play()
     camera.add(listener)
+    if (sound.current.isPlaying === false) {
+      sound.current.play()
+    } 
     return () => camera.remove(listener)
   }, [])
 
