@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useKeyboardControls } from "@react-three/drei";
 import useGame from "./stores/useGame";
 import { addEffect } from "@react-three/fiber";
+import song from "/sound.mp3";
+import Sound from "react-sound";
 
 function Interface() {
   const restart = useGame((state) => state.restart);
@@ -14,6 +16,28 @@ function Interface() {
   const leftward = useKeyboardControls((state) => state.leftward);
   const rightward = useKeyboardControls((state) => state.rightward);
   const jump = useKeyboardControls((state) => state.jump);
+
+  const PlaySound = (
+    handleSongLoading,
+    handleSongPlaying,
+    handleSongFinishedPlaying
+  ) => {
+    const [isPlaying,setIsPlaying] = useState(false);
+
+    return(
+      <div>
+        <button onClick={() => setIsPlaying(!isPlaying)}>{!isPlaying ? 'Play' : 'Stop'}</button>
+        <Sound
+          url={song}
+          playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+          playFromPosition={0}
+          onLoading={handleSongLoading}
+          onPlaying={handleSongPlaying}
+          onFinishedPlaying={handleSongFinishedPlaying}
+        />
+      </div>
+    )
+  }
 
   useEffect(() => {
     const unsubscribeEffect = addEffect(() => {
@@ -39,6 +63,9 @@ function Interface() {
 
   return (
     <div className="interface">
+      <div>
+        <PlaySound/>
+      </div>
       <div ref={time} className="time">
         {timeCount}
       </div>
