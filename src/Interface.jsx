@@ -16,27 +16,7 @@ function Interface() {
   const rightward = useKeyboardControls((state) => state.rightward);
   const jump = useKeyboardControls((state) => state.jump);
 
-  const PlaySound = (
-    handleSongLoading,
-    handleSongPlaying,
-    handleSongFinishedPlaying
-  ) => {
-    const [isPlaying,setIsPlaying] = useState(false);
 
-    return(
-      <div>
-        <button onClick={() => setIsPlaying(!isPlaying)}>{!isPlaying ? 'Play' : 'Stop'}</button>
-        <Sound
-          url={song}
-          playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
-          playFromPosition={0}
-          onLoading={handleSongLoading}
-          onPlaying={handleSongPlaying}
-          onFinishedPlaying={handleSongFinishedPlaying}
-        />
-      </div>
-    )
-  }
 
   useEffect(() => {
     const unsubscribeEffect = addEffect(() => {
@@ -62,9 +42,7 @@ function Interface() {
 
   return (
     <div className="interface">
-      <div>
-        <PlaySound/>
-      </div>
+
       <div ref={time} className="time">
         {timeCount}
       </div>
