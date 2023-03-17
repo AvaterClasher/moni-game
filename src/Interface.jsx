@@ -3,7 +3,6 @@ import { useKeyboardControls } from "@react-three/drei";
 import useGame from "./stores/useGame";
 import { addEffect } from "@react-three/fiber";
 
-
 function Interface() {
   const restart = useGame((state) => state.restart);
   const phase = useGame((state) => state.phase);
@@ -15,8 +14,6 @@ function Interface() {
   const leftward = useKeyboardControls((state) => state.leftward);
   const rightward = useKeyboardControls((state) => state.rightward);
   const jump = useKeyboardControls((state) => state.jump);
-
-
 
   useEffect(() => {
     const unsubscribeEffect = addEffect(() => {
@@ -31,9 +28,6 @@ function Interface() {
 
       elaspedTime = elaspedTime.toFixed(2);
       setTimeCount(elaspedTime);
-      if (elaspedTime > 65){
-        state.phase = "ended"
-      }
     });
     return () => {
       unsubscribeEffect();
@@ -42,7 +36,6 @@ function Interface() {
 
   return (
     <div className="interface">
-
       <div ref={time} className="time">
         {timeCount}
       </div>
@@ -53,15 +46,25 @@ function Interface() {
       )}
       <div className="controls">
         <div className="raw">
-          <div className={`key ${forward ? "active" : ""}`}></div>
+          <div className={`key ${forward ? "active" : ""}`}>
+            <div className="text">W</div>
+          </div>
         </div>
         <div className="raw">
-          <div className={`key ${leftward ? "active" : ""}`}></div>
-          <div className={`key ${backward ? "active" : ""}`}></div>
-          <div className={`key ${rightward ? "active" : ""}`}></div>
+          <div className={`key ${leftward ? "active" : ""}`}>
+            <div className="text">A</div>
+          </div>
+          <div className={`key ${backward ? "active" : ""}`}>
+            <div className="text">S</div>
+          </div>
+          <div className={`key ${rightward ? "active" : ""}`}>
+            <div className="text">D</div>
+          </div>
         </div>
         <div className="raw">
-          <div className={`key large ${jump ? "active" : ""}`}></div>
+          <div className={`key large ${jump ? "active" : ""}`}>
+            <div className="text">Space</div>
+          </div>
         </div>
       </div>
     </div>
