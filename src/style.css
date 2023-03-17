@@ -50,6 +50,7 @@ body,
     bottom:10%;
     left:0;
     width: 100%;
+    
 }
 
 .controls .raw {
@@ -72,4 +73,12 @@ body,
 
 .controls .key.active{
     background: #00000099;
+    color:#fff;
+}
+
+.controls .text{
+    display:flex;
+    justify-content: center;
+    margin-top: 10px;
+    
 }
