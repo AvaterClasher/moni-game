@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useKeyboardControls } from "@react-three/drei";
 import useGame from "./stores/useGame";
 import { addEffect } from "@react-three/fiber";
-import song from "/sound.mp3";
-import Sound from "react-sound";
+
 
 function Interface() {
   const restart = useGame((state) => state.restart);
